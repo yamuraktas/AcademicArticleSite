@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Login Form Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background: rgb(2,0,36);
+background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(152,228,232,1) 0%, rgba(0,105,147,1) 100%);
+  }
+
+        .wrapper {
+            width: 360px;
+            background: #fff;  /* Beyaz arka plan */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Hafif gölgelendirme */
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #006993;
+            margin-bottom: 20px;
+        }
+
+        .field {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px 20px;
+            border: 2px solid #00a5da;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #003956;  /* Fokuslandığında daha koyu gri çerçeve */
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 30px;
+            border: none;
+            background-color: #00a5da;
+            color: white;  /* Beyaz yazı */
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #003956;  /* Buton üzerine gelindiğinde renk değişikliği */
+        }
+
+        .signup-link,
+        .pass-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-link a,
+        .pass-link a {
+            color: #006993;  /* Koyu gri link */
+            text-decoration: none;
+        }
+
+        .signup-link a:hover,
+        .pass-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Hoş Geldiniz
+        </div>
+        <form method="POST" action="/login">  <!-- Bağlantı URL'si örnek amaçlıdır, gerçek bağlantı URL'nizle değiştirin -->
+            <div class="field">
+                <input type="text" name="email" required placeholder="E-posta Adresi">
+            </div>
+            <div class="field">
+                <input type="password" name="password" required placeholder="Şifre">
+            </div>
+            <div class="field">
+                <input type="submit" value="Giriş Yap">
+            </div>
+        </form>
+        <div class="signup-link">
+            Üye değil misiniz? <a href="/signup">Şimdi Kaydolun</a>
+        </div>
+        <div class="pass-link">
+            Şifremi unuttum <a href="/forgot-password">Şifremi Sıfırla</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;  /* Metni ve başlığı ortalar */
+        }
+        nav {
+            background: rgb(2,0,36);
+background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(152,228,232,1) 0%, rgba(0,105,147,1) 100%);
+            color: #fff;
+            padding: 50px 0;  /* Yüksekliği artırmak için padding değeri artırıldı */
+            /* Alternatif olarak height kullanabilirsiniz:
+            height: 60px; */
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #003956;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 30px; /* Metin boyutu artırıldı */
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        h1, p {
+            margin: 0;
+            padding: 20px 0;  /* Üst ve alt padding eklendi */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/signup">Kayıt Ol</a></li>
+            <li><a href="/login">Giriş Yap</a></li>
+        </ul>
+    </nav>
+    <h1>Ana Sayfa</h1>
+    <p>Hoş geldiniz! Lütfen bir seçim yapın.</p>
+</body>
+</html>

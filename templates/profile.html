@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: rgb(2,0,36);
+            background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(152,228,232,1) 0%, rgba(0,105,147,1) 100%);
+            padding-left: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wrapper {
+            width: 1000px;
+            background: #fff;
+            padding: 40px 40px 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #006993;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #006993;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 50%;
+            padding: 10px;
+            border: 2px solid #00a5da;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #003956;
+        }
+
+        button {
+            width: 40%;
+            padding: 12px;
+            border: none;
+            background-color: #00a5da;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #003956;
+        }
+
+        a {
+            color: #006993;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .interests-section {
+            margin-top: 20px;
+        }
+
+        .interests-section div {
+            margin-bottom: 10px;
+        }
+
+        .recommended-articles {
+            margin-top: 40px;
+        }
+
+        .recommended-articles h2 {
+            font-size: 22px;
+            color: #006993;
+            margin-bottom: 20px;
+        }
+
+        .recommended-articles ul {
+            list-style: none;
+        }
+
+        .recommended-articles li {
+            margin-bottom: 15px;
+        }
+
+        .recommended-articles li strong {
+            display: block;
+            font-size: 18px;
+            color: #003956;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Profil Bilgileri</h1>
+        <form action="/profile" method="POST">
+            <label for="name">İsim:</label>
+            <input type="text" id="name" name="name" value="{{ user['name'] }}" required><br><br>
+
+            <label for="surname">Soyisim:</label>
+            <input type="text" id="surname" name="surname" value="{{ user['surname'] }}" required><br><br>
+
+            <label for="age">Yaş:</label>
+            <input type="number" id="age" name="age" value="{{ user['age'] }}" required><br><br>
+
+            <label for="gender">Cinsiyet:</label>
+            <select id="gender" name="gender">
+                <option value="Erkek" {% if user['gender'] == "Erkek" %}selected{% endif %}>Erkek</option>
+                <option value="Kadın" {% if user['gender'] == "Kadın" %}selected{% endif %}>Kadın</option>
+            </select><br><br>
+
+            <div class="interests-section">
+                <label for="interests">İlgi Alanları:</label>
+                {% for interest in all_interests %}
+                <div>
+                    <input type="checkbox" id="interest_{{ loop.index }}" name="interests" value="{{ interest }}"
+                    {% if interest in user_interests %} checked {% endif %}>
+                    <label for="interest_{{ loop.index }}">{{ interest }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit">Güncelle</button>
+        </form>
+        <a href="/logout">Çıkış Yap</a>
+    </div>
+</body>
+</html>

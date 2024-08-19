@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background: rgb(2,0,36);
+background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(152,228,232,1) 0%, rgba(0,105,147,1) 100%);
+     }
+
+        .wrapper {
+            width: 360px;
+            background: #fff;  /* Beyaz arka plan */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Hafif gölgelendirme */
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #006993;  /* Renk 3 */
+            margin-bottom: 20px;
+        }
+
+        .field {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px 20px;
+            border: 2px solid #00a5da;  /* Renk 4 */
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #003956;  /* Renk 2, Fokuslandığında renk */
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 30px;
+            border: none;
+            background-color: #00a5da;  /* Renk 4 */
+            color: white;  /* Beyaz yazı */
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #003956;  /* Renk 2, Buton üzerine gelindiğinde */
+        }
+
+        select {
+            color: #006993; /* Renk 3, İçerik renk */
+        }
+         .login-link{
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Kayıt Ol
+        </div>
+        <form action="/signup" method="POST">
+            <div class="field">
+                <input type="email" id="email" name="email" required placeholder="Email">
+            </div>
+            <div class="field">
+                <input type="password" id="password" name="password" required placeholder="Şifre">
+            </div>
+            <div class="field">
+                <input type="text" id="name" name="name" required placeholder="Ad">
+            </div>
+            <div class="field">
+                <input type="text" id="surname" name="surname" required placeholder="Soyad">
+            </div>
+            <div class="field">
+                <input type="number" id="age" name="age" required placeholder="Yaş">
+            </div>
+            <div class="field">
+                <select id="gender" name="gender" required>
+                    <option value="">Cinsiyet Seçin</option>
+                    <option value="male">Erkek</option>
+                    <option value="female">Kadın</option>
+                </select>
+            </div>
+           <!-- İlgi Alanları için Checkbox Grubu -->
+<div class="field">
+    <label>İlgi Alanlarınızı Seçin:</label>
+    {% for keyword, count in top_keywords %}
+    <div>
+        <input type="checkbox" name="interests" value="{{ keyword }}">
+        <label for="interests">{{ keyword }}</label>
+    </div>
+    {% endfor %}
+</div>
+
+            <div class="field">
+                <input type="submit" value="Kayıt Ol">
+            </div>
+
+        </form>
+         <div class="login-link">
+            Üye misiniz? <a href="/login">Şimdi Giriş Yapın!</a>
+        </div>
+    </div>
+</body>
+</html>
